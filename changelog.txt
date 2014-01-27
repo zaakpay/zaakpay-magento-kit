@@ -1,0 +1,12 @@
+Magento Zaakpay module changelog
+================================
+
+Fix: 
+     If transact response fails, show the zaakpay responseDescription to the user in 
+     the error message instead of "Zaakpay not available" message
+Date: 
+     Fri Feb 10 11:20:00 IST 2012
+Files:
+     modified:   app/code/community/Zaakpay/Model/Transact.php
+     modified:   app/code/community/Zaakpay/controllers/TransactController.php
+
