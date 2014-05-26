@@ -98,7 +98,7 @@ class Zaakpay_Model_Api_Transact extends Varien_Object
         $fields = array_merge($this->_globalMap, array(
             'merchantIdentifier' => $zaakpayConfig['merchant_id'],
             'orderId' => $order->getIncrementId(),
-            #'returnUrl' => $this->getReturnUrl(),
+            'returnUrl' => $this->getReturnUrl(),
             'buyerEmail' => $order->getCustomerEmail(),
             'buyerFirstName' => $order->getCustomerLastname(),
             'buyerLastName' => $order->getCustomerFirstname(),

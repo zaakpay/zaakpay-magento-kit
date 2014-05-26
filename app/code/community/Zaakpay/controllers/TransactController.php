@@ -54,9 +54,10 @@ class Zaakpay_TransactController extends Mage_Core_Controller_Front_Action
             // load the order and change the order status
             $zaakpay = Mage::getModel('zaakpay/transact');
             $state = $zaakpay->zaakpaySuccessOrderState();
-            $order = Mage::getModel('sales/order')
-                ->loadByIncrementId($postdata['orderId'])
-                ->setState($state, true);
+			$order = Mage::getModel('sales/order')->loadByIncrementId($postdata['orderId']);
+                
+            $order->setData('state', $state);
+            $order->setStatus($state);
             // also do something similar to capturing the payment here            
             $payment = $order->getPayment();
             $transaction = Mage::getModel('sales/order_payment_transaction');

@@ -12,8 +12,11 @@ class Zaakpay_Block_Redirect extends Mage_Core_Block_Abstract
         $fields = $zaakpay->getCheckoutFormFields();
         $form = '<form id="zaakpay_checkout" method="POST" action="' . $zaakpay->getZaakpayTransactAction() . '">';
         foreach($fields as $key => $value) {
-            $form .= '<input type="hidden" name="'.$key.'" value="'.Checksum::sanitizedParam($value).'" />'."\n";
-            #$form .= '<input type="hidden" name="'.$key.'" value="'.$value.'" />'."\n";
+            if ($key == 'returnUrl') {
+				$form .= '<input type="hidden" name="'.$key.'" value="'.Checksum::sanitizedURL($value).'" />'."\n";
+			} else {
+				$form .= '<input type="hidden" name="'.$key.'" value="'.Checksum::sanitizedParam($value).'" />'."\n";
+			}
         }
         $form .= '</form>';
         $html = '<html><body>';
